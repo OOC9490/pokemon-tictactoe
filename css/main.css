@@ -1,13 +1,4 @@
-#board{
-    display: flex;
-    width: 390px;
-    height: 390px;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+body {
+    background-color: black;
 }
-.box{
-    width: 110px;
-    height: 110px;
-    border-radius: 20%;
-    border: 2px solid black; 
-}
+
