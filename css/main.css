@@ -6,9 +6,16 @@ body {
     position: relative;
     height:100vh;
 }
+
 h1 {
     margin: 0;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .endGameOverlay {
     position: fixed;
     display: none;
@@ -69,11 +76,12 @@ h1 {
     margin: 0;
 }
 
-#midgameRestart {
+#midgameRestart, #newSettings {
     width: 280px;
     height: 30px;
     opacity: 0;
     transition: 3s;
+    margin-bottom: 10px;
 }
 
 #inGameMessages{

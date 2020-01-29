@@ -1,7 +1,9 @@
 const ui = {
     symbolPaths: ["images/valor_logo.png","images/mystic_logo.png","images/instinct_logo.png","images/rocket_logo.png"],
+    teamColours: ["#ed130a","#0073eb","#f4cc08","#d24a2a"],
     p0Team: "", //player 1
     p1Team: "", //player 2
+    playerColours: [],
 
     endOfGameMsg: function(turnPlayerTeam, moves){
         $('#gameboard').addClass("disabled");
@@ -14,21 +16,23 @@ const ui = {
     },
 
     setSymbol: function( index, team ){
+        this.playerColours.push(this.teamColours[index]);
         this[team] = this.symbolPaths[index];
         game.setTeam( index, team );
     },
 
     showBoard: function(){
-        let increaseFade = 0.5;
         $('.box').each(function(){
-            $(this).css({"opacity":"1","transition":`${ 1.5 + increaseFade }s`});
-            increaseFade += 0.5;
+            $(this).css({"opacity":"1","transition":`1s`});
         });
         $('#midgameRestart').css({"opacity":"1"});
+        $('#newSettings').css({"opacity":"1"});
         setTimeout(function(){
             $('#midgameRestart').removeClass('disabled');
+            $('#newSettings').removeClass('disabled');
             $('.box').removeClass('disabled');
             ui.playerTurnMsg(game.playerLabels[game.currentPlayer]);
+            ui.colourChange(game.currentPlayer);
         },3000);
     },
 
@@ -40,16 +44,19 @@ const ui = {
         $('#inGameMessages').fadeOut(250).html(`It is ${turnPlayerLabel}'s turn!`).fadeIn(250);
     },
 
-    
+    restart: function(){
+        $('.endGameOverlay').fadeOut(1000);
+        $('#gameboard').removeClass('disabled');
+        $('.box').removeClass('p0 p1').html("");
+        game.resetGame();
+    },
+
+    colourChange: function(turnPlayer){
+        const playerColour = this.playerColours[turnPlayer];
+        $('#inGameMessages').css({"color":`${playerColour}`});
+        $('.box').css({"box-shadow":`0 0 20px 7px ${playerColour}`});
+    },
 }
-
-$('#restart').on('click',function(){
-    ui.restart();
-});
-
-$('#midgameRestart').on('click',function(){
-    ui.restart();
-});
 
 $(document).ready(function(){
     $('.cpuChecker').on('click', function(){
@@ -77,6 +84,14 @@ $(document).ready(function(){
                 ui.showBoard();
             },2100);
         };
+    });
+
+    $('#restart').on('click',function(){
+        ui.restart();
+    });
+    
+    $('#midgameRestart').on('click',function(){
+        ui.restart();
     });
 });
 

@@ -11,6 +11,14 @@ const game =
     currentMoves: 0,
     playerLabels: [],
 
+    coinFlip: function(){
+        if ( Math.random() > 0.5 ){
+            return 1;
+        }else{
+            return 0;
+        }
+    },
+
     //Checks for a win or a draw
     check: function( id, player, team ){
         //check for a draw and exit check function if the game state is found to be a draw
@@ -30,13 +38,23 @@ const game =
         };
         this.currentPlayer = 1 - player;  // switch between players (used as array index)
         ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
+        ui.colourChange(this.currentPlayer);
     },
+
     setTeam: function( index, team ){
         this[team] = this.teams[index];
         this.playerLabels.push(this[team]);
-    }
+    },
+
+    resetGame: function(){
+        this.currentMoves = 0;
+        this.currentPlayer = this.coinFlip();
+        Object.keys(this.scoreCard).forEach(number => this.scoreCard[number] = [0,0]);
+        ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
+    },
 }
 $(document).ready(function(){
+    game.currentPlayer = game.coinFlip(); //randomises who goes first
     $('.box').on('click', function() {
         if( $(this).hasClass('p0') === false && $(this).hasClass('p1') === false ){
             const currentPlayer = `p${game.currentPlayer}Team`;
