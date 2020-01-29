@@ -1,4 +1,83 @@
 body {
     background-color: black;
+    font-family: 'Bangers', cursive;
+    color:white;
+    margin: 0;
+    position: relative;
+    height:100vh;
+}
+h1 {
+    margin: 0;
+}
+.endGameOverlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 4;
 }
 
+.buttonHolder {
+    margin:0;
+    position: absolute;
+    height:100px;
+    width: 400px;   
+    top:50%;
+    left: calc( 50% - 200px );
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.buttonHolder, #userMessages, header{
+    text-align: center;
+    z-index: 2;
+}
+
+.p1Team, .p0Team{
+    display: none;
+}
+
+#gameboard{
+    display: flex;
+    width: 390px;
+    height: 390px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    position: absolute;
+    left: calc(50% - 195px);
+    top: calc(50% - 195px);
+    z-index: 1;
+    margin: 0;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 20%;
+    border: 2px solid white;
+    opacity: 0;
+}
+
+
+
+/* .box:hover{
+    box-shadow: 0 0 30px 15px red;
+} box-shadow: x-offset y-offset blur spread color*/
+
+.box img{
+    max-width: 95px;
+    max-height: 95px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
