@@ -26,7 +26,7 @@ a {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
-    z-index: 4;
+    z-index: 3;
     text-align: center;
 }
 
@@ -46,12 +46,34 @@ a {
     z-index: 2;
 }
 
+.buttons {
+    cursor: pointer;
+}
+
 .p1Team, .p0Team{
     display: none;
 }
 
 .uiMessages{
     font-size: 200%;
+}
+
+div.rulesToggle, div.resultsToggle{
+    width: 100px;
+    max-height: 40px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    margin: 10px 0;
+    z-index: 4;
+}
+
+div.rulesToggle:hover, div.resultsToggle:hover{
+    color: lightblue;
+    box-shadow: 0 0 20px 7px lightblue;
 }
 
 #setupErrors {
@@ -71,17 +93,20 @@ a {
     justify-content: space-evenly;
     position: relative;
     left: calc(50% - 195px);
-    top: calc(50% - 250px);
+    top: calc(50% - 350px);
     z-index: 1;
     margin: 0;
 }
 
-#midgameRestart, #newSettings {
+.restart,.newSettings,button.resultsToggle {
     width: 280px;
     height: 30px;
-    opacity: 0;
-    transition: 3s;
     margin-bottom: 10px;
+}
+
+.opacityToggle{
+    opacity: 0;
+    transition: 2sec;
 }
 
 #inGameMessages{
@@ -102,11 +127,6 @@ a {
     opacity: 0;
 }
 
-
-
-/* .box:hover{
-    box-shadow: 0 0 30px 15px red;
-} box-shadow: x-offset y-offset blur spread color*/
 
 .box img{
     max-width: 95px;

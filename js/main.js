@@ -9,6 +9,7 @@ const game =
     p1Team: "", //player 2
     cpuEnabled: false,
     currentMoves: 0,
+    drawCheck: false,
     playerLabels: [],
 
     coinFlip: function(){
@@ -21,20 +22,21 @@ const game =
 
     //Checks for a win or a draw
     check: function( id, player, team ){
-        //check for a draw and exit check function if the game state is found to be a draw
-        if(this.currentMoves === 9){
-            ui.endOfGameMsg(team, this.currentMoves);
-            return;
-        };
         // iterate over each number in the ID string for the square, i.e. [1,4,7]
         for (var i = 0; i < id.length; i++) {
             var winState = id[i];
             this.scoreCard[ winState ][ player ] += 1;  // register the current move by incrementing the counter for this win state
             if(this.scoreCard[ winState ][ player ] === 3 ){
             // if any of these reach 3, it means they've won
-                ui.endOfGameMsg(team, this.currentMoves);
+                ui.endOfGameMsg(team, this.drawCheck);
                 return;
             }
+        };
+        //check for a draw and exit check function if the game state is found to be a draw
+        if(this.currentMoves === 9){
+            this.drawCheck = true;
+            ui.endOfGameMsg(team, this.drawCheck);
+            return;
         };
         this.currentPlayer = 1 - player;  // switch between players (used as array index)
         ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
@@ -47,10 +49,12 @@ const game =
     },
 
     resetGame: function(){
+        this.drawCheck = false;
         this.currentMoves = 0;
         this.currentPlayer = this.coinFlip();
         Object.keys(this.scoreCard).forEach(number => this.scoreCard[number] = [0,0]);
         ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
+        ui.colourChange(this.currentPlayer);
     },
 }
 $(document).ready(function(){

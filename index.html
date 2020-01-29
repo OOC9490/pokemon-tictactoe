@@ -14,20 +14,22 @@
     <title>Document</title>
 </head>
 <body>
-    <audio>
-        <source id="Rocket" src="sounds/041 - Zubat.wav"></source>
-        <source id="Mystic" src="sounds/144 - Articuno.wav"></source>
-        <source id="Instinct" src="sounds/145 - Zapdos.wav"></source>
-        <source id="Valor" src="sounds/146 - Moltres.wav.wav"></source>
-    </audio>
+    <audio class="Rocket" src="sounds/041 - Zubat.wav"></audio>
+    <audio class="Mystic" src="sounds/144 - Articuno.wav"></audio>
+    <audio class="Instinct" src="sounds/145 - Zapdos.wav"></audio>
+    <audio class="Valor" src="sounds/146 - Moltres.wav"></audio>
+    <audio class="userInteract" src="sounds/menu_change.wav"></audio>
     <header>
         <h1>Tic-Tac-Toe!</h1>
     </header>
+    <div class="menu rulesToggle">Rules</div>
+    <div class="menu resultsToggle opacityToggle">Results</div>
     <div class="endGameOverlay">
         <div class="buttonHolder">
             <div class="uiMessages" id="endGame"></div>
-            <button class="buttons" id="restart">Play Again</button class="buttons">
-            <button class="buttons"><a href="index.html">New Settings</a></button>
+            <button class="buttons restart opacityToggle">Play Again</button class="buttons">
+            <button class="buttons newSettings opacityToggle">New Settings</button>
+            <button class="buttons resultsToggle opacityToggle">View Results</button>
         </div>
     </div>
         <div class="buttonHolder cpuToggle">
@@ -51,8 +53,8 @@
         </div>
         <div class="uiMessages" id="setupErrors"></div>
         <div id="gameboard">
-            <button class="buttons disabled" id="midgameRestart">Restart</button>
-            <button class="buttons disabled" id="newSettings"><a href="index.html">New Settings</a></button>
+            <button class="buttons disabled restart opacityToggle">Restart</button>
+            <button class="buttons disabled newSettings opacityToggle">Reset Settings</button>
             <div class="box disabled" id="147"></div>
             <div class="box disabled" id="15"></div>
             <div class="box disabled" id="168"></div>

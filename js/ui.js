@@ -5,13 +5,14 @@ const ui = {
     p1Team: "", //player 2
     playerColours: [],
 
-    endOfGameMsg: function(turnPlayerTeam, moves){
+    endOfGameMsg: function(turnPlayerTeam, drawCheck){
         $('#gameboard').addClass("disabled");
         $('.endGameOverlay').fadeIn(1500);
-        if(moves === 9){
+        if(drawCheck === true){
             $('#endGame').html(`It is a draw!`);
         }else{
             $('#endGame').html( `Team  ${turnPlayerTeam} Won!<br>Play again with the same settings?` );
+            this.playSound(turnPlayerTeam);
         };
     },
 
@@ -22,18 +23,15 @@ const ui = {
     },
 
     showBoard: function(){
-        $('.box').each(function(){
-            $(this).css({"opacity":"1","transition":`1s`});
-        });
-        $('#midgameRestart').css({"opacity":"1"});
-        $('#newSettings').css({"opacity":"1"});
+        $('.box').css({"opacity":"1","transition":`1s`});
+        $('.opacityToggle').css({"opacity":"1"});
         setTimeout(function(){
-            $('#midgameRestart').removeClass('disabled');
-            $('#newSettings').removeClass('disabled');
+            $('.restart').removeClass('disabled');
+            $('.newSettings').removeClass('disabled');
             $('.box').removeClass('disabled');
             ui.playerTurnMsg(game.playerLabels[game.currentPlayer]);
             ui.colourChange(game.currentPlayer);
-        },3000);
+        },2000);
     },
 
     drawSymbol: function( turnPlayerTeam, $clickedBox ){
@@ -55,6 +53,10 @@ const ui = {
         const playerColour = this.playerColours[turnPlayer];
         $('#inGameMessages').css({"color":`${playerColour}`});
         $('.box').css({"box-shadow":`0 0 20px 7px ${playerColour}`});
+    },
+
+    playSound: function(className){
+        $(`.${className}`)[0].play(); //converts a jQuery element to vanilla DOM so the play function can interact with it   
     },
 }
 
@@ -80,18 +82,23 @@ $(document).ready(function(){
         if( $team === 'p0Team'){
             $('.p1Team').delay(2100).fadeIn(1500);
         }else{
+            $('#inGameMessages').html("Loading...").fadeIn(1000);
             setTimeout(function(){
                 ui.showBoard();
             },2100);
         };
     });
 
-    $('#restart').on('click',function(){
+    $('.restart').on('click',function(){
         ui.restart();
     });
-    
-    $('#midgameRestart').on('click',function(){
-        ui.restart();
+
+    $('.menu, .buttons, .box').on('click',function(){
+        ui.playSound("userInteract");
+    });
+
+    $('.newSettings').on('click', function(){
+        window.location.href = "index.html";
     });
 });
 
