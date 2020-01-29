@@ -24,41 +24,46 @@
         <h1>Tic-Tac-Toe!</h1>
     </header>
     <div class="endGameOverlay">
-        <button id="restart">Play Again</button>
-        <button><a href="index.html">New Settings</a></button>
+        <div class="buttonHolder">
+            <div class="uiMessages" id="endGame"></div>
+            <button class="buttons" id="restart">Play Again</button class="buttons">
+            <button class="buttons"><a href="index.html">New Settings</a></button>
+        </div>
     </div>
         <div class="buttonHolder cpuToggle">
-            <div class="startMessages">Who will you play against today? (CPU player is by default Player 2!)</div>
-            <button class="cpuChecker" value="human">Human</button>
-            <button class="cpuChecker" value="cpu">Cpu</button>
+            <div class="uiMessages">Who will you play against today? (CPU player is by default Player 2!)</div>
+            <button class="cpuChecker buttons" value="human">Human</button>
+            <button class="cpuChecker buttons" value="cpu">Cpu</button>
         </div>
         <div class="buttonHolder p0Team">
-            <p>Which team will player 1 be in?</p>
-            <button class="teamSelect" team="p0Team" value="0">Valor</button>
-            <button class="teamSelect" team="p0Team" value="1">Mystic</button>
-            <button class="teamSelect" team="p0Team" value="2">Instinct</button>
-            <button class="teamSelect" team="p0Team" value="3">Rocket</button>
+            <div class="uiMessages">Which team will player 1 be in?</div>
+            <button class="teamSelect buttons" team="p0Team" value="0">Valor</button>
+            <button class="teamSelect buttons" team="p0Team" value="1">Mystic</button>
+            <button class="teamSelect buttons" team="p0Team" value="2">Instinct</button>
+            <button class="teamSelect buttons" team="p0Team" value="3">Rocket</button>
         </div>
         <div class="buttonHolder p1Team">
-            <p>Which team will player 2 be in?</p>
-            <button class="teamSelect" team="p1Team" value="0">Valor</button>
-            <button class="teamSelect" team="p1Team" value="1">Mystic</button>
-            <button class="teamSelect" team="p1Team" value="2">Instinct</button>
-            <button class="teamSelect" team="p1Team" value="3">Rocket</button>
+            <div class="uiMessages">Which team will player 2 be in?</div>
+            <button class="teamSelect buttons" team="p1Team" value="0">Valor</button>
+            <button class="teamSelect buttons" team="p1Team" value="1">Mystic</button>
+            <button class="teamSelect buttons" team="p1Team" value="2">Instinct</button>
+            <button class="teamSelect buttons" team="p1Team" value="3">Rocket</button>
         </div>
-        <div id="userMessages"></div>
-        <br>
+        <div class="uiMessages" id="setupErrors"></div>
         <div id="gameboard">
-            <div class="box" id="147"></div>
-            <div class="box" id="15"></div>
-            <div class="box" id="168"></div>
-            <div class="box" id="24"></div>
-            <div class="box" id="2578"></div>
-            <div class="box" id="26"></div>
-            <div class="box" id="348"></div>
-            <div class="box" id="35"></div>
-            <div class="box" id="367"></div>
+            <button class="buttons disabled" id="midgameRestart">Restart</button>
+            <div class="box disabled" id="147"></div>
+            <div class="box disabled" id="15"></div>
+            <div class="box disabled" id="168"></div>
+            <div class="box disabled" id="24"></div>
+            <div class="box disabled" id="2578"></div>
+            <div class="box disabled" id="26"></div>
+            <div class="box disabled" id="348"></div>
+            <div class="box disabled" id="35"></div>
+            <div class="box disabled" id="367"></div>
+            <div class="uiMessages" id="inGameMessages">Test</div>
         </div>
+        
     <footer>
         &copy; Lawrence Carreon 2020
     </footer>

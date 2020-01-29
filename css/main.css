@@ -20,6 +20,7 @@ h1 {
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 4;
+    text-align: center;
 }
 
 .buttonHolder {
@@ -42,17 +43,44 @@ h1 {
     display: none;
 }
 
+.uiMessages{
+    font-size: 200%;
+}
+
+#setupErrors {
+    position: relative;
+    margin: 0;
+    top: calc( 50% + 50px);
+    width: 400px;
+    left: calc( 50% - 200px);
+    text-align: center;
+}
+
 #gameboard{
     display: flex;
     width: 390px;
-    height: 390px;
+    height: 500px;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    position: absolute;
+    position: relative;
     left: calc(50% - 195px);
-    top: calc(50% - 195px);
+    top: calc(50% - 250px);
     z-index: 1;
     margin: 0;
+}
+
+#midgameRestart {
+    width: 280px;
+    height: 30px;
+    opacity: 0;
+    transition: 3s;
+}
+
+#inGameMessages{
+    position: relative;
+    width: 390px;
+    text-align: center;
+    display: none;
 }
 
 .box{
@@ -80,4 +108,8 @@ h1 {
 footer {
     position: fixed;
     bottom: 0;
+}
+
+.disabled{
+    pointer-events: none;
 }
