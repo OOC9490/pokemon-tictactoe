@@ -69,10 +69,10 @@ const ui = {
     },
 
     sideMenuToggler: function(subject, opposite){
-        if($(`#${subject}`).css('width') !== "300px"){
-            $(`#${subject}`).css({"width":"300px"});
+        if($(`#${subject}`).width() <= $(window).width()){
+            $(`#${subject}`).css({"width":"100vw"});
             $(`#${opposite}`).css({"width":"0"});
-            $('body').css({"margin-left":"300px"});
+            $('body').css({"margin-left":"100vw"});
         }else{
             $(`#${subject}`).css({"width":"0"});
             $('body').css({"margin-left":"0"});
@@ -140,7 +140,7 @@ $(document).ready(function(){
         ui.playSound("userInteract");
     });
 
-    $('.resultsToggle, .rulesToggle').on('click',function(){
+    $('.resultsToggle, .rulesToggle, .closeButton').on('click',function(){
         const buttonValue = $(this).attr('value');
         const oppValue = $(this).attr('opposite');
         ui.sideMenuToggler( buttonValue, oppValue );

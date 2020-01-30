@@ -46,8 +46,20 @@ h1 {
     cursor: pointer;
 }
 
-.cpu {
-    display: none;
+.closeButton {
+    position: absolute;
+    top: 0; 
+    right: 25px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 125%;
+}
+
+.closeButton:hover{
+    color: lightblue;
+    text-shadow: 0 0 7px lightblue;
 }
 
 .p1Team, .p0Team{
@@ -181,6 +193,7 @@ footer {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
+    margin-top: 10px;
 }
 
 #results th, td {
