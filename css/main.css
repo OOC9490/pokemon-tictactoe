@@ -46,6 +46,10 @@ h1 {
     cursor: pointer;
 }
 
+.cpu {
+    display: none;
+}
+
 .p1Team, .p0Team{
     display: none;
 }
