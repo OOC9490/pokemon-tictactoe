@@ -31,6 +31,7 @@ const ui = {
             $('.box').removeClass('disabled');
             ui.playerTurnMsg(game.playerLabels[game.currentPlayer]);
             ui.colourChange(game.currentPlayer);
+            ui.playSound("gameStart");
         },2000);
     },
 
@@ -57,6 +58,17 @@ const ui = {
 
     playSound: function(className){
         $(`.${className}`)[0].play(); //converts a jQuery element to vanilla DOM so the play function can interact with it   
+    },
+
+    sideMenuToggler: function(subject, opposite){
+        if($(`#${subject}`).css('width') !== "300px"){
+            $(`#${subject}`).css({"width":"300px"});
+            $(`#${opposite}`).css({"width":"0"});
+            $('body').css({"margin-left":"300px"});
+        }else{
+            $(`#${subject}`).css({"width":"0"});
+            $('body').css({"margin-left":"0"});
+        };
     },
 }
 
@@ -95,6 +107,12 @@ $(document).ready(function(){
 
     $('.menu, .buttons, .box').on('click',function(){
         ui.playSound("userInteract");
+    });
+
+    $('.menu').on('click',function(){
+        const buttonValue = $(this).attr('value');
+        const oppValue = $(this).attr('opposite');
+        ui.sideMenuToggler( buttonValue, oppValue);
     });
 
     $('.newSettings').on('click', function(){

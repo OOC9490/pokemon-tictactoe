@@ -19,11 +19,26 @@
     <audio class="Instinct" src="sounds/145 - Zapdos.wav"></audio>
     <audio class="Valor" src="sounds/146 - Moltres.wav"></audio>
     <audio class="userInteract" src="sounds/menu_change.wav"></audio>
+    <audio class="gameStart" src="sounds/boot.wav"></audio>
     <header>
         <h1>Tic-Tac-Toe!</h1>
     </header>
-    <div class="menu rulesToggle">Rules</div>
-    <div class="menu resultsToggle opacityToggle">Results</div>
+    <div class="menu rulesToggle" value="rulesToggle" opposite="resultsToggle">How To?</div>
+    <div class="menu resultsToggle opacityToggle" value="resultsToggle" opposite="rulesToggle">Results</div>
+    <div id="rulesToggle">
+        <p>1. Peform the 3 step setup you are greeted with.</p>
+        <p>2. Each player alternates between turns to place tokens on the gameboard.</p>
+        <p>3. The aim of the game is to line up 3 of your tokens in a row!</p>
+        <p>4. You can then keep playing with the same set up or reconfigure the game.</p> 
+    </div>
+    <div id="resultsToggle">
+        <table id=results>
+            <tr>
+                <th class="rounds">Rounds</th>
+                <th class="winners">Winner</th>
+            </tr>
+        </table>
+    </div>
     <div class="endGameOverlay">
         <div class="buttonHolder">
             <div class="uiMessages" id="endGame"></div>

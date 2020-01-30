@@ -5,15 +5,11 @@ body {
     margin: 0;
     position: relative;
     height:100vh;
+    transition: 0.5s;
 }
 
 h1 {
     margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: black;
 }
 
 .endGameOverlay {
@@ -75,6 +71,20 @@ div.rulesToggle:hover, div.resultsToggle:hover{
     color: lightblue;
     box-shadow: 0 0 20px 7px lightblue;
 }
+
+#rulesToggle,#resultsToggle {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    font-size: 200%;
+}  
 
 #setupErrors {
     position: relative;
@@ -140,4 +150,21 @@ footer {
 
 .disabled{
     pointer-events: none;
+}
+
+#results {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results th {
+    border-bottom: 2px solid white;
+}
+
+.winners{
+    border-left: 2px solid white;
+}
+
+.rounds{
+    border-right: 2px solid white;
 }
