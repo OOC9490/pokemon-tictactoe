@@ -30,14 +30,17 @@ const ui = {
         $('.box').css({"opacity":"1","transition":`1s`});
         $('.opacityToggle').css({"opacity":"1"});
         setTimeout(function(){
-            $('.restart').removeClass('disabled');
-            $('.newSettings').removeClass('disabled');
-            $('.box').removeClass('disabled');
-            ui.playerTurnMsg(game.playerLabels[game.currentPlayer]);
-            ui.colourChange(game.currentPlayer);
+            ui.playerTurnMsg(game.playerLabels[game.leadingPlayer]);
+            ui.colourChange(game.leadingPlayer);
             ui.playSound("gameStart");
             $('div.resultsToggle').show();
         },2000);
+        setTimeout(function(){
+            $('.restart').removeClass('disabled');
+            $('.newSettings').removeClass('disabled');
+            $('.box').removeClass('disabled');
+            game.aiFirstMove();
+        },3000);
     },
 
     drawSymbol: function( turnPlayerTeam, $clickedBox ){
@@ -102,7 +105,7 @@ const ui = {
 
 $(document).ready(function(){
     $('.cpuChecker').on('click', function(){
-        if($(this).value === "cpu"){
+        if($(this).attr('value') === "cpu"){
             game.cpuEnabled = true;
         };
         $('.cpuToggle').fadeOut(1500);
