@@ -4,8 +4,8 @@ A project I made for fun to improve on my first Tic Tac Toe project, a lot more 
 
 # To do
 
-[ ] Implementing an AI that can challenge the player (doesn't have to be unbeatable, just has to utilise some logic)
-[ ] Make the sliding UI more mobile friendly
+- Implementing an AI that can challenge the player (doesn't have to be unbeatable, just has to utilise some logic)
+- Make the sliding UI more mobile friendly
 
 # Resources used
 
