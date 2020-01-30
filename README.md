@@ -6,6 +6,7 @@ A project I made for fun to improve on my first Tic Tac Toe project, a lot more 
 
 - Implementing an AI that can challenge the player (doesn't have to be unbeatable, just has to utilise some logic)
 - Make the sliding UI more mobile friendly
+- Network Multiplayer? (I'm not sure this is worth it for this kind of game, but the learning experience would be pretty valuable!)
 
 # Resources used
 
