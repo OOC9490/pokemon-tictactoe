@@ -36,6 +36,7 @@ const ui = {
             ui.playerTurnMsg(game.playerLabels[game.currentPlayer]);
             ui.colourChange(game.currentPlayer);
             ui.playSound("gameStart");
+            $('div.resultsToggle').show();
         },2000);
     },
 

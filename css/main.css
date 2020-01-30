@@ -71,6 +71,10 @@ div.rulesToggle, div.resultsToggle{
     z-index: 4;
 }
 
+div.resultsToggle{
+    display: none;
+}
+
 div.rulesToggle:hover, div.resultsToggle:hover{
     color: lightblue;
     box-shadow: 0 0 20px 7px lightblue;
@@ -88,7 +92,11 @@ div.rulesToggle:hover, div.resultsToggle:hover{
     transition: 0.5s;
     padding-top: 30px;
     font-size: 200%;
-}  
+}
+
+#rulesToggle p{
+    margin-top:0;
+}
 
 #setupErrors {
     position: relative;
@@ -176,6 +184,7 @@ footer {
 }
 
 #results th, td {
+    border-top: 2px solid white;
     border-bottom: 2px solid white;
 }
 
