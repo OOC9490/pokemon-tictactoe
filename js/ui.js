@@ -4,15 +4,19 @@ const ui = {
     p0Team: "", //player 1
     p1Team: "", //player 2
     playerColours: [],
+    games: 1,
+    boardReset: 0,
 
     endOfGameMsg: function(turnPlayerTeam, drawCheck){
         $('#gameboard').addClass("disabled");
         $('.endGameOverlay').fadeIn(1500);
         if(drawCheck === true){
-            $('#endGame').html(`It is a draw!`);
+            $('#endGame').html(`It is a draw!<br>Play again with the same settings?`);
+            this.updateScoreBoard(this.games,2);
         }else{
             $('#endGame').html( `Team  ${turnPlayerTeam} Won!<br>Play again with the same settings?` );
             this.playSound(turnPlayerTeam);
+            this.updateScoreBoard(this.games,game.currentPlayer);
         };
     },
 
@@ -70,6 +74,29 @@ const ui = {
             $('body').css({"margin-left":"0"});
         };
     },
+
+    updateScoreBoard: function(gameNumber,winningTeam){
+        if( this.boardReset === 10 ){
+            $('#results tr').not(':first').empty();
+            this.boardReset = 0;
+            return this.updateScoreBoard(gameNumber,winningTeam);
+        }else{
+            if(winningTeam > 1){
+                $('#results tr:last').after(`<tr>
+                <td class="rounds">GAME ${gameNumber}</td>
+                <td class="winners">DRAW</td>
+                </tr>`);
+            }else{
+                const teamName = `p${winningTeam}Team`;
+                $('#results tr:last').after(`<tr>
+                <td class="rounds">GAME ${gameNumber}</td>
+                <td class="winners"><img src="${this[teamName]}"></td>
+                </tr>`);
+            }
+            this.games++;
+            this.boardReset++;
+        }
+    },
 }
 
 $(document).ready(function(){
@@ -109,10 +136,10 @@ $(document).ready(function(){
         ui.playSound("userInteract");
     });
 
-    $('.menu').on('click',function(){
+    $('.resultsToggle, .rulesToggle').on('click',function(){
         const buttonValue = $(this).attr('value');
         const oppValue = $(this).attr('opposite');
-        ui.sideMenuToggler( buttonValue, oppValue);
+        ui.sideMenuToggler( buttonValue, oppValue );
     });
 
     $('.newSettings').on('click', function(){

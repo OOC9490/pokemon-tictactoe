@@ -108,10 +108,23 @@ div.rulesToggle:hover, div.resultsToggle:hover{
     margin: 0;
 }
 
-.restart,.newSettings,button.resultsToggle {
+.buttons {
+    background-image: linear-gradient(slategray,white,slategray);
+    width: 150px;
+    height: 40px;
+    border-radius: 5%;
+    margin: 10px 0;
+    font-size: 125%;
+}
+
+.buttons:hover{
+    background-image: linear-gradient(white,slategray,white);
+    color:white;
+}
+
+.buttons.restart,.buttons.newSettings,.buttons.resultsToggle {
     width: 280px;
     height: 30px;
-    margin-bottom: 10px;
 }
 
 .opacityToggle{
@@ -155,10 +168,15 @@ footer {
 #results {
     width: 100%;
     border-collapse: collapse;
+    text-align: center;
 }
 
-#results th {
+#results th, td {
     border-bottom: 2px solid white;
+}
+
+td img{
+    max-height:37px;
 }
 
 .winners{
