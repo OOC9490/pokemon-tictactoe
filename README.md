@@ -9,7 +9,7 @@ A project I made for fun to improve on my first Tic Tac Toe project, a lot more 
 
 ## To do
 
-- ~~Implementing an AI that can challenge the player (Minimax algorithm - I will have to refactor how the game board/ win state is determine so I can more easily account for the columns and rows for making the AI move.)~~ (I took advantage of the game's simple logic and designed a smart AI)
+- ~~Implementing an AI that can challenge the player (Minimax algorithm - I will have to refactor how the game board/ win state is determine so I can more easily account for the columns and rows for making the AI move.)~~ (Using Tic Tac Toe's logic i designed a non-algorithmic, smart computer).
 - ~~Make the sliding UI more mobile friendly~~
 - Network Multiplayer? (I'm not sure this is worth it for this kind of game, but the learning experience would be pretty valuable!)
 
