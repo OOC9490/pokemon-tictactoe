@@ -5,7 +5,7 @@ const ui = {
     p1Team: "", //player 2
     playerColours: [],
     games: 1,
-    boardReset: 0,
+    scoreBoardClear: 0,
 
     endOfGameMsg: function(turnPlayerTeam, drawCheck){
         $('#gameboard').addClass("disabled");
@@ -82,9 +82,9 @@ const ui = {
     },
 
     updateScoreBoard: function(gameNumber,winningTeam){
-        if( this.boardReset === 10 ){
+        if( this.scoreBoardClear === 10 ){
             $('#results tr').not(':first').empty();
-            this.boardReset = 0;
+            this.scoreBoardClear = 0;
             return this.updateScoreBoard(gameNumber,winningTeam);
         }else{
             if(winningTeam > 1){
@@ -100,7 +100,7 @@ const ui = {
                 </tr>`);
             }
             this.games++;
-            this.boardReset++;
+            this.scoreBoardClear++;
         }
     },
 }
