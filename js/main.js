@@ -13,6 +13,7 @@ const game =
     drawCheck: false,
     playerLabels: [],
     leadingPlayer: 0,
+    aiHasMoved: false,
 
     coinFlip: function(){
         if ( Math.random() > 0.5 ){
@@ -47,6 +48,7 @@ const game =
         ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
         ui.colourChange(this.currentPlayer);
         this.aiTurn();
+        this.aiHasMoved = false;
     },
 
     setTeam: function( index, team ){
@@ -62,6 +64,7 @@ const game =
         Object.keys(this.tilesFilled).forEach(key => this.tilesFilled[key] = false);
         ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
         ui.colourChange(this.currentPlayer);
+        this.aiHasMoved = false;
         this.aiFirstMove();
     },
 
@@ -77,7 +80,7 @@ const game =
             if( this.aiWinOrDenyPlayer(1,2,0) ){return;}; //AI prioritises winning over anything else
             if( this.aiWinOrDenyPlayer(0,2,0) ){return;}; //AI then checks for any possible player winning situations
             if( this.aiWinOrDenyPlayer(1,1,1) ){return;}; //AI then checks for any moves that would set up a possible win (so it ignores any lines on the board that already have no chance of winnning)
-            if( this.currentMoves < 2 || this.currentMoves === 8){this.aiOptimalOpeningMove();}; // AI's predetermined first moves or if it moves last
+            if( this.aiHasMoved === false ){this.aiOpeningOrRandomMove();}; // AI's predetermined first moves or it's in a position where it can't find a winning path
         };
         return;
     },
@@ -91,6 +94,7 @@ const game =
                 const affectedTiles = tilesNotFilled.filter(element => element.includes(currentElement));
                 if( affectedTiles.length > lengthToCheck){
                     $(`#${affectedTiles[Math.floor( Math.random() * affectedTiles.length)]}`).click();
+                    this.aiHasMoved = true;
                     return true; // forces aiTurn function to stop (to prevent the ai from making multiple moves)
                 };
             };
@@ -98,7 +102,7 @@ const game =
         return false; // lets aiTurn keep going 
     },
 
-    aiOptimalOpeningMove: function(){
+    aiOpeningOrRandomMove: function(){
         const $middleTile = $('#2578');
         const $cornerTiles = [];
         $('#147, #168, #348, #367').each(function(){
@@ -107,19 +111,19 @@ const game =
             };
         });
         const $randomCornerTile = $cornerTiles[Math.floor( Math.random() * $cornerTiles.length )];
-        if(this.leadingPlayer === 1){
+        if(this.leadingPlayer === 1 && this.currentMoves <= 1){
             //The AI is the first to move, it will aim for the corners
             $randomCornerTile.click();
         }else{
             //If the AI is second it will aim for the middle tile or take a corner, if the player takes the middle tile going first
             if($middleTile.is(':empty')){
                 $middleTile.click();
-            }else if($cornerTiles.length !== 0){
+            }else if($cornerTiles.length > 0){
                 $randomCornerTile.click();
             }else{
-                $('.box:empty').click();
+                $('.box:empty').eq(0).click();
             };
-        }
+        };
     },
 }
 $(document).ready(function(){
