@@ -69,7 +69,7 @@ const ui = {
     },
 
     sideMenuToggler: function(subject, opposite){
-        if($(`#${subject}`).width() <= $(window).width()){
+        if($(`#${subject}`).width() <= ($(window).width() / 2)){
             $(`#${subject}`).css({"width":"105vw"});
             $(`#${opposite}`).css({"width":"0"});
             $('body').css({"margin-left":"105vw"});
