@@ -49,8 +49,8 @@ h1 {
 .closeButton {
     position: absolute;
     top: 0; 
-    right: 25px;
-    width: 25px;
+    right: 5%;
+    width: 150px;
     height: 25px;
     text-align: center;
     cursor: pointer;
@@ -107,7 +107,7 @@ div.rulesToggle:hover, div.resultsToggle:hover{
 }
 
 #rulesToggle p{
-    margin-top:0;
+    margin-top:10px;
 }
 
 #setupErrors {
