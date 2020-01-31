@@ -86,16 +86,20 @@ const game =
     },
 
     aiWinOrDenyPlayer: function( playerToCheck, valueToCheck, lengthToCheck ){
+        if($('#2578').is(':empty') && this.currentMoves > 1){
+            $('#2578').click();
+            return true;
+        };// this forces the most optimal move, taking the centre after a corner on the leading move, if the human doesn't take it
         const tilesNotFilled = Object.keys(this.tilesFilled).filter(key => this.tilesFilled[key] === false);
         const scoreKeyArray = Object.keys(this.scoreCard).filter(key => this.scoreCard[key][playerToCheck] === valueToCheck);
         if ( scoreKeyArray.length > 0){
             for(let i = 0; i < scoreKeyArray.length; i++){
-                const currentElement = scoreKeyArray[i];
-                const affectedTiles = tilesNotFilled.filter(element => element.includes(currentElement));
+                const tileId = scoreKeyArray[i];
+                const affectedTiles = tilesNotFilled.filter(element => element.includes(tileId));
                 if( affectedTiles.length > lengthToCheck){
                     $(`#${affectedTiles[Math.floor( Math.random() * affectedTiles.length)]}`).click();
                     this.aiHasMoved = true;
-                    return true; // forces aiTurn function to stop (to prevent the ai from making multiple moves)
+                    return true; // causes aiTurn function to stop (to prevent the ai from making multiple moves)
                 };
             };
         };
