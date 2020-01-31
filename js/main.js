@@ -65,14 +65,7 @@ const game =
         ui.playerTurnMsg(this.playerLabels[this.currentPlayer]);
         ui.colourChange(this.currentPlayer);
         this.aiHasMoved = false;
-        this.aiFirstMove();
-    },
-
-    aiFirstMove: function(){
-        if(this.cpuEnabled && this.leadingPlayer === 1){
-            this.aiTurn();
-        };
-        return;
+        if(this.leadingPlayer === 1){this.aiTurn()};
     },
 
     aiTurn: function(){
