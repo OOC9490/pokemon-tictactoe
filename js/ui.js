@@ -73,9 +73,11 @@ const ui = {
             $(`#${subject}`).css({"width":"105vw"});
             $(`#${opposite}`).css({"width":"0"});
             $('body').css({"margin-left":"105vw"});
+            $('.endGameOverlay').css({"margin-left":"105vw"});
         }else{
             $(`#${subject}`).css({"width":"0"});
             $('body').css({"margin-left":"0"});
+            $('.endGameOverlay').css({"margin-left":"0"});
         };
     },
 
