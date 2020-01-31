@@ -39,7 +39,7 @@ const ui = {
             $('.restart').removeClass('disabled');
             $('.newSettings').removeClass('disabled');
             $('.box').removeClass('disabled');
-            game.aiFirstMove();
+            game.aiTurn();
         },3000);
     },
 
