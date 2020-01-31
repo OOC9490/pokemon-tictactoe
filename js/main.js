@@ -17,11 +17,9 @@ const game =
 
     coinFlip: function(){
         if ( Math.random() > 0.5 ){
-            this.leadingPlayer = 1; //Player 2 goes first
-            return 1;
+            return this.leadingPlayer = 1; //Player 2 goes first
         }else{
-            this.leadingPlayer = 0; //Player 1 goes first
-            return 0;
+            return this.leadingPlayer = 0; //Player 1 goes first
         }
     },
 
@@ -75,7 +73,6 @@ const game =
             if( this.aiWinOrDenyPlayer(1,1,1) ){return;}; //AI then checks for any moves that would set up a possible win (so it ignores any lines on the board that already have no chance of winnning)
             if( this.aiHasMoved === false ){this.aiOpeningOrRandomMove();}; // AI's predetermined first moves or it's in a position where it can't find a winning path
         };
-        return;
     },
 
     aiWinOrDenyPlayer: function( playerToCheck, valueToCheck, lengthToCheck ){
